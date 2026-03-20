@@ -561,7 +561,7 @@
       btn.textContent = 'Sending...';
       btn.disabled = true;
       const data = new FormData(form);
-      data.append('access_key', 'd5d1cdea-caf9-4936-abf7-9d3a0c57b600');
+      data.append('access_key', '0dea5b96-2865-4776-a463-419a26a7b344');
       const res = await fetch('https://api.web3forms.com/submit', {method:'POST',body:data});
       const json = await res.json();
       if (json.success) {
@@ -577,8 +577,4 @@
 </script>
 </body>
 </html>
-
-
-
-
-                   
+  
