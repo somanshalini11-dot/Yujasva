@@ -551,7 +551,34 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function submitForm(){
-  var n=document.getElementById('fn').value,e=document.getElementById('fe').value;
-  if(!n||!e){alert('Please fill in your name and email
+<script>
+  const form = document.getElementById('contact-form');
+  const success = document.querySelector('.fsuccess');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.sbtn');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      const data = new FormData(form);
+      data.append('access_key', 'd5d1cdea-caf9-4936-abf7-9d3a0c57b600');
+      const res = await fetch('https://api.web3forms.com/submit', {method:'POST',body:data});
+      const json = await res.json();
+      if (json.success) {
+        form.style.display = 'none';
+        success.classList.add('show');
+      } else {
+        btn.textContent = 'Try Again';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  }
+</script>
+</body>
+</html>
+
+
+
+
+                   
